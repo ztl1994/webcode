@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乘法表</title>
+</head>
+<style>
+    .box{
+        height: 380px;
+        padding: 0 30px ;
+        border-bottom: 2px solid red;
+        margin: 30px 0;
+    }
+    .box p{
+        float: left;
+        height: 30px;
+        width: 90px;
+        border: 1px solid  orange;
+        margin: 5px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .clear{
+        clear: both;
+    }
+</style>
+<body>
+    <div id="box1" class="box">
+        
+    </div>
+    <div id="box2" class="box">
+
+    </div>
+    <div id="box3" class="box">
+
+    </div>
+    <div id="box4" class="box">
+
+    </div>
+</body>
+<script>
+    // 第一个
+    var obox1 = document.getElementById('box1');
+    var str='';
+    for (var i = 1;i<10 ;i++){
+        for (var j = 1;j<i+1;j++){
+            str += `<p> ${j} * ${i} = ${i*j} </p>`;//'<p>'+j+'*'+i+'='+'i*j'+'<p>';
+            if(i==j){
+                str+= '<div class="clear"></div>'
+            }
+        }
+    }
+    obox1.innerHTML = str;
+    // 第二个
+    var obox2 = document.getElementById('box2');
+    var str2='';
+    for (var i = 9;i>0 ;i--){
+        for (var j = 1;j<i+1;j++){
+            str2 += `<p> ${j} * ${i} = ${i*j} </p>`;
+            if(i==j){
+                str2+= '<div class="clear"></div>'
+            }
+        }
+    }
+    obox2.innerHTML = str2;
+    // 第三个
+    var obox3 = document.getElementById('box3');
+    var str3='';
+    for (var i = 9;i>0 ;i--){
+        for (var j = 9;j>i-1;j--){
+            str3 += `<p> ${i} * ${j} = ${i*j} </p>`;
+            if(i==j){
+                str3+= '<div class="clear"></div>'
+            }
+        }
+    }
+    obox3.innerHTML = str3;
+    // 第四个
+    var obox4 = document.getElementById('box4');
+    var str4='';
+    for (var i = 1;i<10 ;i++){
+        for (var j = 9;j>i-1;j--){
+            str4 += `<p> ${i} * ${j} = ${i*j} </p>`;
+            if(i==j){
+                str4+= '<div class="clear"></div>'
+            }
+        }
+    }
+    obox4.innerHTML = str4;
+</script>
+</html>

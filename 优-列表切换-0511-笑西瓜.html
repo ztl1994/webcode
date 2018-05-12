@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表切换</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .wrap{
+        width: 300px;
+        border: 1px solid black;
+        margin-left: 30px;
+    }
+    .wrap ul{
+        width: 100%;
+    }
+    .wrap ul li{
+        width: 100%;
+        list-style: none;
+    }
+    .wrap ul li span{
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        text-indent: 10px;
+        color: #fff;
+        font-size: 20px;
+        background-color: purple;
+        border-top: 2px solid black;
+    }
+    .wrap ul li p{
+        display: none;
+        height: 35px;
+        font-size: 18px;
+        line-height: 35px;
+        text-indent: 13px;
+    }
+    .wrap ul li p:hover{
+        background-color: deeppink;
+    }
+</style>
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <span class="item">同事</span>
+                <p>张三</p>
+                <p>李四</p>
+                <p>王五</p>
+                <p>赵六</p>
+            </li>
+
+            <li>
+                <span class="item">好友</span>
+                <p>八神</p>
+                <p>草雉</p>
+                <p>大蛇</p>
+            </li>
+
+            <li>
+                <span class="item">VIP学员</span>
+                <p>rain</p>
+                <p>马哥</p>
+                <p>王哥</p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var oitem = document.getElementsByClassName('item');
+    var oli = document.getElementsByTagName('li');
+    var len =oitem.length;
+    for (var i = 0; i<len;i++){
+        oitem[i].index = i;
+        oli[i].show=0;
+        //给每个分组绑定点击事件
+        oitem[i].onclick = function () {
+            //获取每个分组下的条目
+            var mlis = oli[this.index].getElementsByTagName('p');
+            // 打开每个条目
+
+            if( oli[this.index].show == 1){
+                switchOff(mlis);
+                oli[this.index].show =0;
+            }
+            else{
+                for(var j=0; j <oli.length;j++){
+                    oli[j].show = 0;
+                    switchOff(oli[j].getElementsByTagName('p'));
+                }
+                switchOn(mlis);
+                oli[this.index].show =1;
+            }
+
+        }
+    }
+    // 条目开关
+    function switchOn(arr) {
+        for(var i = 0;i<arr.length;i++){
+           arr[i].style.display='block';
+        }
+    }
+    function switchOff(arr) {
+        for(var i = 0;i<arr.length;i++){
+            arr[i].style.display='none';
+        }
+    }
+</script>
+</html>
